@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./frontend 
+    volumes:
+      - static_files:/app/build  # Mount the static files volume
+  caddy:
+    image: caddy
+    ports:
+      - "3000:3000"  # use the same port as SITE_ADDRESS, or you will have issues with tls
+    volumes:
+      - ./web/Caddyfile:/etc/caddy/Caddyfile  # Mount your Caddy configuration, nake sure to change ports
+      - static_files:/var/www/static
+    environment:
+      - SITE_ADDRESS=localhost:3000
+  
+  example_api: #example api server
+    image: traefik/whoami
+    command:
+      - --port=8080
+    ports:
+      - "8080:8080"
+volumes:
+     static_files: 

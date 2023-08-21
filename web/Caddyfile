@@ -1,0 +1,15 @@
+{$SITE_ADDRESS} {
+    tls internal
+    rewrite /web /web/
+    rewrite /api /api/
+    route /api/* {
+	    uri strip_prefix /api
+	    reverse_proxy example_api:8080
+    } 
+    route /web/* { 
+        uri strip_prefix /web
+        root * /var/www/static
+        try_files {path} /index.html
+	    file_server
+    }
+}
