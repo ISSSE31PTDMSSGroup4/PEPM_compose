@@ -1,5 +1,6 @@
 {$SITE_ADDRESS} {
     tls internal
+    redir / /web/ 302
     rewrite /web /web/
     rewrite /api /api/
     route /api/* {
