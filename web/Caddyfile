@@ -3,6 +3,7 @@
     redir / /web/ 302
     rewrite /web /web/
     rewrite /api /api/
+    rewrite /user /user/
     route /api/* {
 	    uri strip_prefix /api
 	    reverse_proxy example_api:8080
@@ -12,5 +13,9 @@
         root * /var/www/static
         try_files {path} /index.html
 	    file_server
+    }
+    route /user/* {
+        uri strip_prefix /user
+        reverse_proxy login_service:5000
     }
 }
