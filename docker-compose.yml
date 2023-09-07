@@ -2,7 +2,8 @@ version: '3'
 
 services:
   frontend:
-    build: ./frontend 
+    #build: ./frontend 
+    image: redthorx/pepm_frontend_local
     volumes:
       - static_files:/app/build  # Mount the static files volume
   caddy:
@@ -23,7 +24,8 @@ services:
       - "8080:8080"
 
   login_service:
-    build: ./login
+    #build: ./login
+    image: redthorx/mse-chat-login-service
     ports: 
       - "5000:5000"
     env_file:
