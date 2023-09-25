@@ -31,5 +31,11 @@ services:
     env_file:
       - .env
   
+  userprofile_service:
+    #build: ./login
+    image: kedy1ykh/user_profile_app
+    ports:
+      - "8001:8001"
+
 volumes:
-     static_files: 
+     static_files:
