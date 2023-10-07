@@ -33,7 +33,7 @@ services:
   
   userprofile_service:
     #build: ./login
-    image: kedy1ykh/user_profile_app
+    image: kedy1ykh/mse-user-profile-service
     ports:
       - "8001:8001"
 
