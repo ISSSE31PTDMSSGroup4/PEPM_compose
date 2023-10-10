@@ -40,7 +40,7 @@ services:
   quiz_service:
     image: shajinihubert/msegroups-quiz-service
     ports:
-      - "5051:5051"
+      - "5050:5050"
 
 volumes:
      static_files:
