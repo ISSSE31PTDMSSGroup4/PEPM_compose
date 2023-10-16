@@ -41,6 +41,8 @@ services:
     image: shajinihubert/msegroups-quiz-service
     ports:
       - "5050:5050"
+    env_file:
+      - quiz.env
 
 volumes:
      static_files:
